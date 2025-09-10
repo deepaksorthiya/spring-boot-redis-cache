@@ -5,13 +5,13 @@
 ### Requirements:
 
 ```
-Git: 2.49.0
-Spring Boot: 3.4.5
+Git: 2.51.0
+Spring Boot: 3.5.5
 Maven: 3.9+
-Redis Server Tested On: 7.4.2
-Java: 21
+Redis Server Tested On: 7+
+Java: 24
 Database : H2-2.2.224
-Docker Desktop: Tested on 4.41.0
+Docker Desktop: Tested on 4.45.0
 ```
 
 ## Clone this repository:

@@ -70,13 +70,13 @@ class PersonServiceIntegrationTests {
     void testCachePutAnnotation() {
         Person updatedPerson = new Person(1, "Updated Person", "Updated Person");
 
-        // Update product
+        // Update person
         Person result = personService.updatePerson(updatedPerson);
         assertEquals("Updated Person", result.getFirstName());
 
-        // Get product should return updated version from cache
-        Person cachedProduct = personService.getPerson(1);
-        assertEquals("Updated Person", cachedProduct.getFirstName());
+        // Get person should return updated version from cache
+        Person cachePerson = personService.getPerson(1);
+        assertEquals("Updated Person", cachePerson.getFirstName());
     }
 
     @Test
