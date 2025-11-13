@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>spring-boot-3-redis-cache</artifactId>
+    <artifactId>spring-boot-redis-cache</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-3-redis-cache</name>
-    <description>Spring Boot 3 Redis as Cache Manager</description>
+    <name>spring-boot-redis-cache</name>
+    <description>Spring Boot Redis as Cache Manager</description>
     <url/>
     <licenses>
         <license/>

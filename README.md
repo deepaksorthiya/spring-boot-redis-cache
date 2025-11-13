@@ -1,4 +1,4 @@
-[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-3-redis-cache/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-3-redis-cache/actions/workflows/maven-build.yml)
+[![Java Maven Build Test](https://github.com/deepaksorthiya/spring-boot-redis-cache/actions/workflows/maven-build.yml/badge.svg)](https://github.com/deepaksorthiya/spring-boot-redis-cache/actions/workflows/maven-build.yml)
 
 # Getting Started
 
@@ -17,8 +17,8 @@ Docker Desktop: Tested on 4.50.0
 ## Clone this repository:
 
 ```bash
-git clone https://github.com/deepaksorthiya/spring-boot-3-redis-cache.git
-cd spring-boot-3-redis-cache
+git clone https://github.com/deepaksorthiya/spring-boot-redis-cache.git
+cd spring-boot-redis-cache
 ```
 
 ## Build Project:

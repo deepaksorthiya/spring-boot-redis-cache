@@ -2,22 +2,22 @@
 FROM bellsoft/liberica-runtime-container:jdk-25-stream-musl AS builder
 
 WORKDIR /home/app
-ADD . /home/app/spring-boot-3-redis-cache
-RUN cd spring-boot-3-redis-cache && chmod +x mvnw && ./mvnw -Dmaven.test.skip=true clean package
+ADD . /home/app/spring-boot-redis-cache
+RUN cd spring-boot-redis-cache && chmod +x mvnw && ./mvnw -Dmaven.test.skip=true clean package
 
 # Stage 2: Layer Tool Stage
 FROM bellsoft/liberica-runtime-container:jdk-25-cds-slim-musl AS optimizer
 
 WORKDIR /home/app
-COPY --from=builder /home/app/spring-boot-3-redis-cache/target/*.jar spring-boot-3-redis-cache.jar
-RUN java -Djarmode=tools -jar spring-boot-3-redis-cache.jar extract --layers --launcher
+COPY --from=builder /home/app/spring-boot-redis-cache/target/*.jar spring-boot-redis-cache.jar
+RUN java -Djarmode=tools -jar spring-boot-redis-cache.jar extract --layers --launcher
 
 # Stage 3: Final Stage
 FROM bellsoft/liberica-runtime-container:jre-25-stream-musl
 
 ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
 EXPOSE 8080
-COPY --from=optimizer /home/app/spring-boot-3-redis-cache/dependencies/ ./
-COPY --from=optimizer /home/app/spring-boot-3-redis-cache/spring-boot-loader/ ./
-COPY --from=optimizer /home/app/spring-boot-3-redis-cache/snapshot-dependencies/ ./
-COPY --from=optimizer /home/app/spring-boot-3-redis-cache/application/ ./
+COPY --from=optimizer /home/app/spring-boot-redis-cache/dependencies/ ./
+COPY --from=optimizer /home/app/spring-boot-redis-cache/spring-boot-loader/ ./
+COPY --from=optimizer /home/app/spring-boot-redis-cache/snapshot-dependencies/ ./
+COPY --from=optimizer /home/app/spring-boot-redis-cache/application/ ./
