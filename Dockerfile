@@ -3,7 +3,7 @@ FROM bellsoft/liberica-runtime-container:jdk-25-stream-musl AS builder
 
 WORKDIR /home/app
 ADD . /home/app/spring-boot-redis-cache
-RUN cd spring-boot-redis-cache && chmod +x mvnw && ./mvnw -Dmaven.test.skip=true clean package
+RUN cd spring-boot-redis-cache && chmod +x mvnw && ./mvnw -Dmaven.test.skip=true -Dnet.bytebuddy.experimental=true clean package
 
 # Stage 2: Layer Tool Stage
 FROM bellsoft/liberica-runtime-container:jdk-25-cds-slim-musl AS optimizer

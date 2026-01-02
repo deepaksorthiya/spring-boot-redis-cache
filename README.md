@@ -24,7 +24,7 @@ cd spring-boot-redis-cache
 ## Build Project:
 
 ```bash
-./mvnw clean package -DskipTests
+./mvnw clean package -DskipTests -D"net.bytebuddy.experimental=true"
 ```
 
 ## Run project
