@@ -6,12 +6,12 @@
 
 ```
 Git: 2.51+
-Spring Boot: 3.5.7
+Spring Boot: 3.5.9
 Maven: 3.9+
 Redis Server Tested On: 7+
 Java: 25
 Database : H2-2.2.224
-Docker Desktop: Tested on 4.50.0
+Docker Desktop: Tested on 4.54+
 ```
 
 ## Clone this repository:

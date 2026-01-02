@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
+import static com.example.config.RedisCacheConfig.PERSON_CACHE;
+
 @Service
 @Slf4j
 public class PersonService {
 
-    public static final String PERSON_CACHE = "PERSON_CACHE";
     private final PersonRepository personRepository;
 
     public PersonService(PersonRepository personRepository) {

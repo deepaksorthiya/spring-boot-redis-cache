@@ -1,5 +1,6 @@
 package com.example.config;
 
+import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.cache.annotation.CachingConfigurer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.CacheErrorHandler;
@@ -13,8 +14,10 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import java.time.Duration;
 
 @EnableCaching
-@Configuration
+@Configuration(proxyBeanMethods = false)
 public class RedisCacheConfig implements CachingConfigurer {
+
+    public static final String PERSON_CACHE = "PERSON_CACHE";
 
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
@@ -23,6 +26,14 @@ public class RedisCacheConfig implements CachingConfigurer {
                 .disableCachingNullValues()
                 .serializeValuesWith(RedisSerializationContext.SerializationPair
                         .fromSerializer(new GenericJackson2JsonRedisSerializer()));
+    }
+
+    @Bean
+    public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer(RedisCacheConfiguration cacheConfiguration) {
+        return builder -> builder
+                .withCacheConfiguration(PERSON_CACHE, cacheConfiguration.entryTtl(Duration.ofMinutes(1)))
+                .withCacheConfiguration("cache2", cacheConfiguration.entryTtl(Duration.ofMinutes(1)));
+
     }
 
     @Override
